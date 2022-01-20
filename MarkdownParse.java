@@ -13,6 +13,12 @@ public class MarkdownParse {
         while(currentIndex < markdown.length()) {
            // System.out.println(currentIndex);
             int nextOpenBracket = markdown.indexOf("[", currentIndex); //if curent index is moved, it will search from there (i.e first current = 0, then current = 41)
+            if(nextOpenBracket == -1) {
+                break;
+            }
+            if (markdown.indexOf("!") == nextOpenBracket - 1) {
+                break;
+            }
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
            // System.out.println("nextCloseBracket: " + nextCloseBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
@@ -20,8 +26,7 @@ public class MarkdownParse {
             if(nextCloseBracket + 1 != closeParen) { //if there is space [] ()
                 break;
             }
-            if (nextOpenBracket == -1 || nextCloseBracket == -1 
-                  || closeParen == -1 || openParen == -1 ) { //if no [], ()
+            if (nextCloseBracket == -1 || closeParen == -1 || openParen == -1 ) { //if no [], ()
                 break;
             }
             toReturn.add(markdown.substring(openParen + 1, closeParen));
