@@ -11,7 +11,8 @@ public class MarkdownParse {
         // the next )
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
-            int nextOpenBracket = markdown.indexOf("[", currentIndex);
+            System.out.println(currentIndex);
+            int nextOpenBracket = markdown.indexOf("[", currentIndex); //if curent index is moved, it will search from there (i.e first current = 0, then current = 41)
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
             int closeParen = markdown.indexOf(")", openParen);
