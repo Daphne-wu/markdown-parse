@@ -17,6 +17,9 @@ public class MarkdownParse {
            // System.out.println("nextCloseBracket: " + nextCloseBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
             int closeParen = markdown.indexOf(")", openParen);
+            if(nextCloseBracket + 1 != closeParen) { //if there is space [] ()
+                break;
+            }
             if (nextOpenBracket == -1 || nextCloseBracket == -1 
                   || closeParen == -1 || openParen == -1 ) { //if no [], ()
                 break;
